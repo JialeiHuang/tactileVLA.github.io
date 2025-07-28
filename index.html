@@ -57,6 +57,12 @@
             margin: 3rem 0;
         }
         
+        .hero-visual img {
+            max-width: 90%;
+            width: auto;
+            height: auto;
+        }
+        
         .gif-matrix {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -105,10 +111,13 @@
         }
         
         .results-container img {
-            width: 100%;
+            max-width: 90%;
+            width: auto;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            display: block;
         }
         
         .subtitle {
@@ -131,6 +140,12 @@
             }
             .gif-item {
                 padding: 1rem;
+            }
+            .hero-visual img {
+                max-width: 95%;
+            }
+            .results-container img {
+                max-width: 95%;
             }
         }
     </style>
@@ -171,15 +186,15 @@
     <!-- Hero Visual Section -->
     <div class="container blog main first" id="blog-main">
         <div class="hero-visual">
-            <img src="assets/figures/teaserfigure-2.png" style="width: 100%; border-radius: 12px; margin: 2rem 0;">
+            <img src="assets/figures/teaserfigure-2.png" style="border-radius: 12px; margin: 2rem 0;">
             <p class="caption">
                 <strong>Figure 1: Key capabilities of Tactile-VLA.</strong> (a) Tactile-aware instruction following: generalizes force-related language to new tasks (b) Utilizing tactile-relevant common sense: applies appropriate grasps for different objects (c) Adaptive tactile-involved reasoning: recovers from failures through reasoning.
             </p>
         </div>
         
         <h1>Methodology</h1>
-        <div style="overflow: hidden; border-radius: 8px;">
-            <img src="assets/figures/architect.png" style="width: 100%; height: 70%; object-fit: cover; object-position: top;">
+        <div style="overflow: hidden; border-radius: 8px; text-align: center;">
+            <img src="assets/figures/architect.png" style="max-width: 90%; height: auto; border-radius: 8px;">
         </div>
         <p class="caption">
             <strong>Figure 2: Tactile-VLA architecture.</strong> Vision, language, tactile, and proprioceptive inputs are encoded and fused via a pre-trained VLM. The tactile-aware action expert generates target position and force for hybrid position-force control.
@@ -189,7 +204,7 @@
         </p>
         
         <h2>Data Collection Setup</h2>
-        <img src="assets/figures/data-collection.png" style="width: 60%; border-radius: 8px; margin: 0 auto; display: block;">
+        <img src="assets/figures/data-collection.png" style="max-width: 60%; height: auto; border-radius: 8px; margin: 0 auto; display: block;">
         <p class="caption">
             <strong>Figure 3: Data collection setup.</strong> We augmented the UMI gripper with dual high-resolution tactile sensors and GoPro camera for capturing synchronized multimodal demonstrations.
         </p>
@@ -323,30 +338,22 @@
             <strong>Chain-of-Thought Reasoning:</strong> We demonstrate that Tactile-VLA-CoT can reason about tactile feedback to recover from failures. When wiping fails due to insufficient force, the model analyzes the situation and autonomously increases force for successful completion.
         </p>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin: 2rem 0;">
-            <div>
-                <img src="assets/figures/CoT.png" style="width: 100%; border-radius: 8px;">
-                <p class="caption">
-                    <strong>Figure 4: Chain-of-Thought reasoning process.</strong> When initial wiping fails, Tactile-VLA-CoT analyzes tactile feedback and autonomously increases force for successful task completion.
-                </p>
-            </div>
+        <div class="results-section">
+            <p class="text">
+                <strong>Reasoning Performance Evaluation:</strong> We test the model's ability to adapt from whiteboard (in-domain) to blackboard (out-of-domain) wiping tasks. <span style="color: #2c5aa0; font-weight: 600;">While baselines completely fail on the novel blackboard task (0% success), Tactile-VLA-CoT achieves 80% success through reasoning-based adaptation, matching its in-domain performance.</span>
+            </p>
             
-            <div class="results-section">
-                <p class="text">
-                    <strong>Reasoning Performance Evaluation:</strong> We test the model's ability to adapt from whiteboard (in-domain) to blackboard (out-of-domain) wiping tasks. <span style="color: #2c5aa0; font-weight: 600;">While baselines completely fail on the novel blackboard task (0% success), Tactile-VLA-CoT achieves 80% success through reasoning-based adaptation, matching its in-domain performance.</span>
-                </p>
-                
-                <div class="table-wrapper">
-                    <table>
-                        <thead class="center">
-                            <tr>
-                                <th>Model</th>
-                                <th>In Domain (%)</th>
-                                <th>Out of Domain (%)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="center">
-                            <tr>
+            <div class="table-wrapper">
+                <table>
+                    <thead class="center">
+                        <tr>
+                            <th>Model</th>
+                            <th>In Domain (%)</th>
+                            <th>Out of Domain (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="center">
+                        <tr>
                                 <td>π₀-base</td>
                                 <td>40</td>
                                 <td>0</td>

@@ -58,7 +58,7 @@
         }
         
         .hero-visual img {
-            max-width: 90%;
+            max-width: 70%;
             width: auto;
             height: auto;
         }
@@ -111,7 +111,7 @@
         }
         
         .results-container img {
-            max-width: 90%;
+            max-width: 70%;
             width: auto;
             height: auto;
             border-radius: 8px;
@@ -125,6 +125,21 @@
             font-weight: 400;
             color: #555;
             margin: 0.5rem 0 1.5rem 0;
+            line-height: 1.4;
+        }
+        
+        .text {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .caption {
+            max-width: 800px;
+            margin: 1rem auto;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
             line-height: 1.4;
         }
         
@@ -142,10 +157,10 @@
                 padding: 1rem;
             }
             .hero-visual img {
-                max-width: 95%;
+                max-width: 85%;
             }
             .results-container img {
-                max-width: 95%;
+                max-width: 85%;
             }
         }
     </style>
@@ -194,7 +209,7 @@
         
         <h1>Methodology</h1>
         <div style="overflow: hidden; border-radius: 8px; text-align: center;">
-            <img src="assets/figures/architect.png" style="max-width: 90%; height: auto; border-radius: 8px;">
+            <img src="assets/figures/architect.png" style="max-width: 70%; height: auto; border-radius: 8px;">
         </div>
         <p class="caption">
             <strong>Figure 2: Tactile-VLA architecture.</strong> Vision, language, tactile, and proprioceptive inputs are encoded and fused via a pre-trained VLM. The tactile-aware action expert generates target position and force for hybrid position-force control.
@@ -204,7 +219,7 @@
         </p>
         
         <h2>Data Collection Setup</h2>
-        <img src="assets/figures/data-collection.png" style="max-width: 60%; height: auto; border-radius: 8px; margin: 0 auto; display: block;">
+        <img src="assets/figures/data-collection.png" style="max-width: 50%; height: auto; border-radius: 8px; margin: 0 auto; display: block;">
         <p class="caption">
             <strong>Figure 3: Data collection setup.</strong> We augmented the UMI gripper with dual high-resolution tactile sensors and GoPro camera for capturing synchronized multimodal demonstrations.
         </p>

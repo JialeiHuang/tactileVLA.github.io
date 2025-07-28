@@ -9,9 +9,6 @@ tactilevla.txt
 # Python脚本
 create_placeholder_images.py
 
-# 模板目录
-clarity-template/
-
 # Claude配置
 .claude/
 

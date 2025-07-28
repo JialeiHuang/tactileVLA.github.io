@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactile-VLA: Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalization</title>
+    <meta name="description" content="Tactile-VLA: Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalization">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tactile-VLA: Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalization">
+    <meta property="og:description" content="Tactile-VLA: Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalization">
+    <meta property="og:image" content="assets/figures/tactilevla_hero.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Tactile-VLA: Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalization">
+    <meta property="twitter:description" content="Tactile-VLA: Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalization">
+    <meta property="twitter:image" content="assets/figures/tactilevla_hero.png">
+    
+    <!-- Clarity Template Styles -->
+    <link rel="stylesheet" type="text/css" media="all" href="clarity-template/assets/stylesheets/main_free.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="clarity-template/clarity/clarity.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
+    <link href="clarity-template/assets/fontawesome-free-6.6.0-web/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
+    
+    <!-- Custom Styles -->
+    <style>
+        .results-section {
+            margin: 3rem 0;
+        }
+        
+        .gif-matrix-horizontal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .results-table {
+            background: rgba(0, 0, 0, 0.02);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        
+        .results-table h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .hero-visual {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .gif-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .gif-item {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.02);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gif-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gif-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gif-item h3 {
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .results-container > div {
+            background: rgba(0, 0, 0, 0.02);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .results-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #555;
+            margin: 0.5rem 0 1.5rem 0;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .gif-matrix {
+                grid-template-columns: 1fr;
+            }
+            .gif-matrix-horizontal {
+                grid-template-columns: 1fr;
+            }
+            .results-container {
+                grid-template-columns: 1fr;
+            }
+            .gif-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Page -->
+    <div class="container blog" id="first-content" style="background: linear-gradient(90deg, hsla(298, 68%, 90%, 1) 0%, hsla(30, 82%, 91%, 1) 100%);">
+        <div class="blog-title no-cover">
+            <div class="blog-intro" style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <div>
+                    <h1 class="title" style="font-size: 4rem; margin-bottom: 1rem;">Tactile-VLA</h1>
+                    <p class="subtitle" style="font-size: 1.8rem; margin-bottom: 2rem; font-weight: 400;">Unlocking Vision-Language-Action Model's Physical Knowledge for Tactile Generalization</p>
+                    
+                    <p class="author" style="font-size: 1.1rem; margin-bottom: 0.5rem;">
+                        Jialei Huang¹*, Shuo Wang¹,²*, Fanqi Lin¹, Yihang Hu¹, Chuan Wen³, Yang Gao¹
+                    </p>
+                    <p class="author" style="font-size: 0.9rem; color: #666; margin-bottom: 2rem;">
+                        ¹Tsinghua University  ²UESTC  ³Shanghai Jiao Tong University
+                    </p>
+                    
+                    <p class="abstract" style="text-align: left; max-width: 800px; margin: 0 auto 2rem auto; font-size: 1rem; line-height: 1.6;">
+                        Vision-Language-Action (VLA) models have shown remarkable achievements, driven by the rich implicit knowledge of their vision-language components. However, achieving generalist robotic agents demands precise grounding into physical interactions, especially in contact-rich scenarios where fine-grained force control is essential. This paper introduces Tactile-VLA, a novel framework that deeply fuses vision, language, action, and tactile sensing. This framework incorporates a hybrid position-force controller to translate the model's intentions into precise physical actions and a reasoning module that allows the robot to adapt its strategy based on tactile feedback. A key finding is that the VLM's prior knowledge already contains semantic understanding of physical interaction; by connecting it to the robot's tactile sensors with only a few demonstrations, we can activate this prior knowledge to achieve zero-shot generalization in contact-rich tasks.
+                    </p>
+                    
+                    <div class="info">
+                        <div>
+                            <a href="https://arxiv.org/abs/2507.09160" class="button icon" style="background-color: rgba(255, 255, 255, 0.25); margin-bottom: 0;"> Paper <i class="fa-solid fa-book-open"></i></a> &nbsp;&nbsp; 
+                            <a href="#code" class="button icon" style="background-color: rgba(255, 255, 255, 0.25); margin-bottom: 0;">Code <i class="fa-solid fa-code"></i></a>  &nbsp;&nbsp; 
+                            <a href="#video" class="button icon" style="background-color: rgba(255, 255, 255, 0.25); margin-bottom: 0;">Video <i class="fa-solid fa-video"></i></a> &nbsp;&nbsp; 
+                            <a href="#data" class="button icon" style="background-color: rgba(255, 255, 255, 0.25); margin-bottom: 0;">Data <i class="fa-solid fa-database"></i></a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Visual Section -->
+    <div class="container blog main first" id="blog-main">
+        <div class="hero-visual">
+            <img src="assets/figures/teaserfigure-2.png" style="width: 100%; border-radius: 12px; margin: 2rem 0;">
+            <p class="caption">
+                <strong>Figure 1: Key capabilities of Tactile-VLA.</strong> (a) Tactile-aware instruction following: generalizes force-related language to new tasks (b) Utilizing tactile-relevant common sense: applies appropriate grasps for different objects (c) Adaptive tactile-involved reasoning: recovers from failures through reasoning.
+            </p>
+        </div>
+        
+        <h1>Methodology</h1>
+        <div style="overflow: hidden; border-radius: 8px;">
+            <img src="assets/figures/architect.png" style="width: 100%; height: 70%; object-fit: cover; object-position: top;">
+        </div>
+        <p class="caption">
+            <strong>Figure 2: Tactile-VLA architecture.</strong> Vision, language, tactile, and proprioceptive inputs are encoded and fused via a pre-trained VLM. The tactile-aware action expert generates target position and force for hybrid position-force control.
+        </p>
+        <p class="text">
+            Tactile-VLA unlocks physical knowledge in Vision-Language-Action models, translating abstract understanding into precise force control. Our token-level fusion approach integrates multimodal information, allowing all modalities to cross-attend freely for enhanced physical interaction.
+        </p>
+        
+        <h2>Data Collection Setup</h2>
+        <img src="assets/figures/data-collection.png" style="width: 60%; border-radius: 8px; margin: 0 auto; display: block;">
+        <p class="caption">
+            <strong>Figure 3: Data collection setup.</strong> We augmented the UMI gripper with dual high-resolution tactile sensors and GoPro camera for capturing synchronized multimodal demonstrations.
+        </p>
+    </div>
+
+    <div class="container blog main" id="video">
+        <h1>Results</h1>
+        
+        <!-- Main demo video -->
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; margin: 2rem 0; background-color: rgba(0,0,0,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: #666;">
+                <i class="fa-solid fa-video" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                <p style="margin: 0; font-size: 1.1rem;">Demo Video Coming Soon</p>
+            </div>
+        </div>
+        
+        <h2>Key Capabilities</h2>
+        <div class="gif-matrix-horizontal">
+            <div class="gif-item">
+                <video loop playsinline muted autoplay src="assets/figures/experiment1.gif" style="border-radius: 8px;"></video>
+                <h3>Instruction Following</h3>
+                <p class="text">Generalizes force-related language to new tasks.</p>
+            </div>
+            
+            <div class="gif-item">
+                <video loop playsinline muted autoplay src="assets/figures/experiment2.gif" style="border-radius: 8px;"></video>
+                <h3>Common Sense</h3>
+                <p class="text">Applies appropriate grasps for different objects.</p>
+            </div>
+            
+            <div class="gif-item">
+                <video loop playsinline muted autoplay src="assets/figures/experiment3.gif" style="border-radius: 8px;"></video>
+                <h3>Adaptive Reasoning</h3>
+                <p class="text">Reasons about failures and adapts strategy.</p>
+            </div>
+        </div>
+        
+        <h2>Quantitative Results</h2>
+        
+        <!-- Success Rate Table -->
+        <div class="results-section">
+            <p class="text">
+                <strong>Task Success Rate Evaluation:</strong> We evaluate our model on USB/Charger insertion and extraction tasks, comparing against π₀-base and π₀-fast baselines. Our model achieves significantly higher success rates across both tasks. <span style="color: #2c5aa0; font-weight: 600;">Most notably, Tactile-VLA achieves 90% success on the charger task compared to 40% and 25% for baselines, demonstrating the critical importance of tactile feedback.</span>
+            </p>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead class="center">
+                        <tr>
+                            <th>Model</th>
+                            <th>USB (%)</th>
+                            <th>Charger (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="center">
+                        <tr>
+                            <td>π₀-base</td>
+                            <td>5</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>π₀-fast</td>
+                            <td>0</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td><b>Tactile-VLA</b></td>
+                            <td><b>35</b></td>
+                            <td><b>90</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Force Control Table -->
+        <div class="results-section">
+            <p class="text">
+                <strong>Force Control Generalization:</strong> We test the model's ability to interpret force-related language commands. The model learns from USB task with 'softly' (0.51N) and 'hard' (2.57N) commands, then generalizes to unseen charger task and novel force words. <span style="color: #2c5aa0; font-weight: 600;">Remarkably, our model shows clear force differentiation (4.68N vs 9.13N) in zero-shot scenarios, while baselines show no correlation between language and applied force.</span>
+            </p>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead class="center">
+                        <tr>
+                            <th>Model</th>
+                            <th>'softly'</th>
+                            <th>'hard'</th>
+                            <th>'gently'</th>
+                            <th>'firmly'</th>
+                            <th>Zero-shot 'softly'</th>
+                            <th>Zero-shot 'hard'</th>
+                        </tr>
+                    </thead>
+                    <tbody class="center">
+                        <tr>
+                            <td>π₀-base</td>
+                            <td>2.41</td>
+                            <td>2.68</td>
+                            <td>2.35</td>
+                            <td>2.72</td>
+                            <td>6.61</td>
+                            <td>5.69</td>
+                        </tr>
+                        <tr>
+                            <td>π₀-fast</td>
+                            <td>2.61</td>
+                            <td>2.33</td>
+                            <td>2.79</td>
+                            <td>2.45</td>
+                            <td>7.37</td>
+                            <td>6.42</td>
+                        </tr>
+                        <tr>
+                            <td><b>Tactile-VLA</b></td>
+                            <td><b>0.51</b></td>
+                            <td><b>2.57</b></td>
+                            <td><b>0.75</b></td>
+                            <td><b>1.98</b></td>
+                            <td><b>4.68</b></td>
+                            <td><b>9.13</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Chain of Thought Section -->
+        <h2>Adaptive Reasoning</h2>
+        <p class="text">
+            <strong>Chain-of-Thought Reasoning:</strong> We demonstrate that Tactile-VLA-CoT can reason about tactile feedback to recover from failures. When wiping fails due to insufficient force, the model analyzes the situation and autonomously increases force for successful completion.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin: 2rem 0;">
+            <div>
+                <img src="assets/figures/CoT.png" style="width: 100%; border-radius: 8px;">
+                <p class="caption">
+                    <strong>Figure 4: Chain-of-Thought reasoning process.</strong> When initial wiping fails, Tactile-VLA-CoT analyzes tactile feedback and autonomously increases force for successful task completion.
+                </p>
+            </div>
+            
+            <div class="results-section">
+                <p class="text">
+                    <strong>Reasoning Performance Evaluation:</strong> We test the model's ability to adapt from whiteboard (in-domain) to blackboard (out-of-domain) wiping tasks. <span style="color: #2c5aa0; font-weight: 600;">While baselines completely fail on the novel blackboard task (0% success), Tactile-VLA-CoT achieves 80% success through reasoning-based adaptation, matching its in-domain performance.</span>
+                </p>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead class="center">
+                            <tr>
+                                <th>Model</th>
+                                <th>In Domain (%)</th>
+                                <th>Out of Domain (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="center">
+                            <tr>
+                                <td>π₀-base</td>
+                                <td>40</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>π₀-fast</td>
+                                <td>45</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Tactile-VLA</td>
+                                <td>80</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td><b>Tactile-VLA-CoT</b></td>
+                                <td><b>75</b></td>
+                                <td><b>80</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container blog main" id="code">
+        <h1>Code & Data</h1>
+        
+        <div class="info">
+            <div>
+                <a href="#" class="button icon" style="background-color: rgba(0, 0, 0, 0.1); margin-bottom: 0; color: #666;">GitHub <i class="fa-solid fa-code"></i> <span style="font-size: 0.8em;">Coming Soon</span></a> &nbsp;&nbsp;
+                <a href="#" class="button icon" style="background-color: rgba(0, 0, 0, 0.1); margin-bottom: 0; color: #666;">Models <i class="fa-solid fa-database"></i> <span style="font-size: 0.8em;">Coming Soon</span></a> &nbsp;&nbsp;
+                <a href="#" class="button icon" style="background-color: rgba(0, 0, 0, 0.1); margin-bottom: 0; color: #666;">Dataset <i class="fa-solid fa-download"></i> <span style="font-size: 0.8em;">Coming Soon</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container blog main">
+        <h1>Citation</h1>
+        <p class="text">
+            If you find our work useful, please consider citing:
+        </p>
+        <pre><code class="plaintext">@article{Huang2025TactileVLA,
+    author  = {Jialei Huang and Shuo Wang and Fanqi Lin and Yihang Hu and Chuan Wen and Yang Gao},
+    title   = {TACTILE-VLA: UNLOCKING VISION-LANGUAGE-ACTION MODEL'S PHYSICAL KNOWLEDGE FOR TACTILE GENERALIZATION},
+    journal = {arXiv preprint arXiv:2507.09160},
+    year    = {2025}
+}</code></pre>
+    </div>
+
+    <!-- Footer Page -->
+    <footer>
+        <div class="container">
+            <p>
+                This website is built on the <a href="https://shikun.io/projects/clarity">Clarity Template</a>, designed by <a href="https://shikun.io/">Shikun Liu</a>.
+            </p>
+        </div>    
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="clarity-template/clarity/clarity.js"></script>    
+    <script src="clarity-template/assets/scripts/main.js"></script>    
+</body>
+</html>

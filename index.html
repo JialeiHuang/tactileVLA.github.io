@@ -185,19 +185,14 @@
 
     <!-- Hero Visual Section -->
     <div class="container blog main first" id="blog-main">
-        <div class="hero-visual">
-            <img src="assets/figures/teaserfigure-2.png" style="width: 100%; border-radius: 12px; margin: 2rem 0;">
-            <p class="caption">
-                <strong>Figure 1: Key capabilities of Tactile-VLA.</strong> (a) Tactile-aware instruction following: generalizes force-related language to new tasks (b) Utilizing tactile-relevant common sense: applies appropriate grasps for different objects (c) Adaptive tactile-involved reasoning: recovers from failures through reasoning.
-            </p>
-        </div>
+        
         
         <h1>Methodology</h1>
         <div style="overflow: hidden; border-radius: 8px;">
             <img src="assets/figures/architect.png" style="width: 100%; height: 70%; object-fit: cover; object-position: top;">
         </div>
         <p class="caption">
-            <strong>Figure 2: Tactile-VLA architecture.</strong> Vision, language, tactile, and proprioceptive inputs are encoded and fused via a pre-trained VLM. The tactile-aware action expert generates target position and force for hybrid position-force control.
+            <strong>Figure 1: Tactile-VLA architecture.</strong> Vision, language, tactile, and proprioceptive inputs are encoded and fused via a pre-trained VLM. The tactile-aware action expert generates target position and force for hybrid position-force control.
         </p>
         <p class="text">
             Tactile-VLA unlocks physical knowledge in Vision-Language-Action models, translating abstract understanding into precise force control. Our token-level fusion approach integrates multimodal information, allowing all modalities to cross-attend freely for enhanced physical interaction.
@@ -206,7 +201,7 @@
         <h2>Data Collection Setup</h2>
         <img src="assets/figures/data-collection.png" style="width: 60%; border-radius: 8px; margin: 0 auto; display: block;">
         <p class="caption">
-            <strong>Figure 3: Data collection setup.</strong> We augmented the UMI gripper with dual high-resolution tactile sensors and GoPro camera for capturing synchronized multimodal demonstrations.
+            <strong>Figure 2: Data collection setup.</strong> We augmented the UMI gripper with dual high-resolution tactile sensors and GoPro camera for capturing synchronized multimodal demonstrations.
         </p>
     </div>
 
@@ -216,25 +211,11 @@
         <!-- Main demo video -->
         
         
-        <h2>Key Capabilities</h2>
-        <div class="gif-matrix-horizontal">
-            <div class="gif-item">
-                <video loop playsinline muted autoplay src="assets/figures/experiment1.gif" style="border-radius: 8px;"></video>
-                <h3>Instruction Following</h3>
-                <p class="text">Generalizes force-related language to new tasks.</p>
-            </div>
-            
-            <div class="gif-item">
-                <video loop playsinline muted autoplay src="assets/figures/experiment2.gif" style="border-radius: 8px;"></video>
-                <h3>Common Sense</h3>
-                <p class="text">Applies appropriate grasps for different objects.</p>
-            </div>
-            
-            <div class="gif-item">
-                <video loop playsinline muted autoplay src="assets/figures/experiment3.gif" style="border-radius: 8px;"></video>
-                <h3>Adaptive Reasoning</h3>
-                <p class="text">Reasons about failures and adapts strategy.</p>
-            </div>
+        <div class="hero-visual">
+            <img src="assets/figures/teaserfigure-2.png" style="width: 100%; border-radius: 12px; margin: 2rem 0;">
+            <p class="caption">
+                <strong>Figure 3: Key capabilities of Tactile-VLA.</strong> (a) Tactile-aware instruction following: generalizes force-related language to new tasks (b) Utilizing tactile-relevant common sense: applies appropriate grasps for different objects (c) Adaptive tactile-involved reasoning: recovers from failures through reasoning.
+            </p>
         </div>
         
         <h2>Quantitative Results</h2>
